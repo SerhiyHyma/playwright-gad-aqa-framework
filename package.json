@@ -1,0 +1,18 @@
+{
+  "name": "gadtestprjct",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "testEx": "npx playwright test --project=chromium",
+    "test": "npx playwright test tests/ui/navigation.spec.ts --project=chromium"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.5.0"
+  }
+}
