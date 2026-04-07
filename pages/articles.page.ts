@@ -11,8 +11,4 @@ export class ArticlesPage {
         this.articlesMenuButton = page.getByTestId('open-articles');
         this.paginationController = page.locator('#paginationController');
     }
-
-    async isOpened() {
-        return await this.articlesMenuButton.isDisabled();
-    }
 }

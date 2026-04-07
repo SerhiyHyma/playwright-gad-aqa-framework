@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "testEx": "npx playwright test --project=chromium",
-    "test": "npx playwright test tests/ui/navigation.spec.ts --project=chromium"
-
+    "test:all": "playwright test",
+    "test:ui": "playwright test tests/ui",
+    "test": "npx playwright test tests/ui/navigation.spec.ts --project=chromium",
+    "test:navigation": "playwright test tests/ui/navigation.spec.ts --project=chromium",
+    "report": "playwright show-report"
   },
   "keywords": [],
   "author": "",
