@@ -8,6 +8,7 @@
     "test:ui": "playwright test tests/ui",
     "test": "npx playwright test tests/ui/navigation.spec.ts --project=chromium",
     "test:navigation": "playwright test tests/ui/navigation.spec.ts --project=chromium",
+    "test:chromium": "playwright test --project=chromium",
     "report": "playwright show-report"
   },
   "keywords": [],
