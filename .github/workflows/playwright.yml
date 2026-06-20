@@ -39,26 +39,6 @@ jobs:
         run: DEBUG=pw:install npx playwright install chromium
         timeout-minutes: 10
 
-      - name: Start GAD app
-        working-directory: ../gad-gui-api-demo
-        run: |
-          npm start > ../gad-app.log 2>&1 &
-
-      - name: Wait for GAD app
-        run: |
-          for i in {1..60}; do
-            if curl -sSf http://localhost:3000 > /dev/null; then
-              echo "GAD app is up"
-              exit 0
-            fi
-            echo "Waiting for GAD app..."
-            sleep 2
-          done
-
-          echo "GAD app did not start in time"
-          cat ../gad-app.log
-          exit 1
-
       - name: Run Playwright tests
         run: npm run test:chromium
 
