@@ -1,12 +1,26 @@
 import dotenv from 'dotenv';
+import path from 'node:path';
 
-dotenv.config();
+dotenv.config({
+  path: path.resolve(__dirname, '../.env'),
+  quiet: true,
+});
+
+function getRequiredEnv(name: string): string {
+  const value = process.env[name];
+
+  if (!value) {
+    throw new Error(`Missing required environment variable: ${name}`);
+  }
+
+  return value;
+}
 
 export const config = {
   baseURL: process.env.BASE_URL || 'http://localhost:3000',
 
   user: {
-    email: process.env.TEST_USER_EMAIL || '',
-    password: process.env.TEST_USER_PASSWORD || '',
+    email: getRequiredEnv('TEST_USER_EMAIL'),
+    password: getRequiredEnv('TEST_USER_PASSWORD'),
   },
 };
