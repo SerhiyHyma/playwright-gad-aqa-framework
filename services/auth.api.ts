@@ -1,6 +1,7 @@
 import { APIRequestContext, expect } from "@playwright/test";
 import { testUsers } from "../data/users";
 import { config } from '../config/env';
+import { LoginResponse } from "../types/api.types";
 
 
 export class AuthApi {
@@ -14,7 +15,7 @@ export class AuthApi {
             }
         });
         await expect(response).toBeOK();
-        const body = await response.json();
+        const body = await response.json() as LoginResponse;
         return body.access_token;
     }
 }
