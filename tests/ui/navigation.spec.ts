@@ -1,7 +1,8 @@
 import { expect } from '@playwright/test';
 import { test } from '../../fixtures/app.fixture';
-import { RestoreApi } from '../../services/restore.api';
 
+
+test.describe.configure({mode: 'serial'});
 
 test.beforeEach(async ({ homePage }) => {
     await homePage.open();
@@ -46,8 +47,7 @@ test('User should see article created via API on UI', async ({ page, homePage, a
     await expect(page.getByText(uniqueTitle)).toBeVisible();
 });
 
-test('User should see article created via API on UI after DB restore', async ({ page, homePage, authApi, articlesApi }) => {
-    const restoreApi = new RestoreApi(page.request);
+test('User should see article created via API on UI after DB restore', async ({ page, homePage, authApi, articlesApi, restoreApi }) => {
     // Arrange
     await restoreApi.restoreDefaultDB();
     const uniqueTitle = `Restored Article ${Date.now()}`;

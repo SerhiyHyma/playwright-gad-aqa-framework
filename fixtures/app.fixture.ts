@@ -3,6 +3,7 @@ import { HomePage } from '../pages/home.page';
 import { ArticlesPage } from '../pages/articles.page';
 import { AuthApi } from '../services/auth.api';
 import { ArticlesApi } from '../services/articles.api';
+import { RestoreApi } from '../services/restore.api';
 
 
 type AppFixtures = {
@@ -10,6 +11,7 @@ type AppFixtures = {
     articlesPage: ArticlesPage;
     authApi: AuthApi;
     articlesApi: ArticlesApi;
+    restoreApi: RestoreApi;
 };
 
 export const test = base.extend<AppFixtures>({
@@ -27,5 +29,9 @@ export const test = base.extend<AppFixtures>({
 
     articlesApi: async ({ request }, use) => {
         await use(new ArticlesApi(request))
+    },
+
+    restoreApi: async ({ request }, use) => {
+        await use(new RestoreApi(request))
     }
 });
