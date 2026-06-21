@@ -20,3 +20,16 @@ export type RestoreResponse = {
         articleLikes: number;
     };
 };
+
+export type HealthResponse = {
+    status: string;
+};
+
+export type DbHealthResponse = {
+    status: string;
+    result: {
+        missingTablesInCurrentDb: string[];
+        missingKeysInCurrentDb: string[];
+        invalidObjects: string[];
+    };
+};

@@ -1,19 +1,15 @@
-import { test, expect, APIResponse } from '@playwright/test';
+import { expect } from '@playwright/test';
+import { test } from '../../fixtures/app.fixture';
 
 
-test('Health endpoint should return 200', async ({ request }) => {
-    const response: APIResponse = await request.get('/api/health');
-    const body = await response.json();
-
-    expect(response.status()).toBe(200);
+test('Health endpoint should return OK status', async ({ healthApi }) => {
+    const body = await healthApi.getHealth();
     expect(body.status).toBe('OK');
 });
 
-test('DB health endpoint should return 200 and no problems', async ({ request }) => {
-    const response = await request.get('/api/health/dbcheck');
-    const body = await response.json();
+test('DB health endpoint should return 200 and no problems', async ({ healthApi }) => {
+    const body = await healthApi.getDbHealth();
 
-    expect(response).toBeOK();
     expect(body.status).toBe('OK');
     expect(body.result.missingTablesInCurrentDb).toEqual([]);
     expect(body.result.missingKeysInCurrentDb).toEqual([]);
