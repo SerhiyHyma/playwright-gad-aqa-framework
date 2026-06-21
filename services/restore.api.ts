@@ -1,24 +1,25 @@
 import { APIRequestContext, expect } from "@playwright/test";
+import { RestoreResponse } from "../types/api.types";
 
 
 export class RestoreApi {
     constructor(private request: APIRequestContext) {};
 
-    async restoreDefaultDB() {
+    async restoreDefaultDB(): Promise<RestoreResponse> {
         const response = await this.request.get('/api/restoreDB');
         await expect(response).toBeOK();
-        return await response.json();
+        return await response.json() as RestoreResponse;
     };
     
-    async restoreEmptyDb() {
+    async restoreEmptyDb(): Promise<RestoreResponse> {
         const response = await this.request.get('/api/restoreEmptyDB');
         await expect(response).toBeOK();
-        return await response.json();
+        return await response.json() as RestoreResponse;
     }
     
-    async restoreBigDb() {
+    async restoreBigDb(): Promise<RestoreResponse> {
         const response = await this.request.get('/api/restoreBigDB');
         await expect(response).toBeOK();
-        return await response.json();
+        return await response.json() as RestoreResponse;
     }
 };
