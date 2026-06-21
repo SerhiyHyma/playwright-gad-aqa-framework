@@ -21,11 +21,11 @@ export const test = base.extend<AppFixtures>({
         await use(new ArticlesPage(page));
     },
 
-    authApi: async ({ page }, use) => {
-        await use(new AuthApi(page.request))
+    authApi: async ({ request }, use) => {
+        await use(new AuthApi(request))
     },
 
-    articlesApi: async ({ page }, use) => {
-        await use(new ArticlesApi(page.request))
+    articlesApi: async ({ request }, use) => {
+        await use(new ArticlesApi(request))
     }
 });
