@@ -28,7 +28,7 @@ test('User should see pagination on Articles page', async ({ page, homePage, art
 
     //Assert
     await expect(page).toHaveURL('http://localhost:3000/articles.html');
-    await expect(articlesPage.paginationController).toBeVisible();
+    await expect(articlesPage.pagination.root).toBeVisible();
 });
 
 test('User should see article created via API on UI', async ({ page, homePage, authApi, articlesApi }) => {

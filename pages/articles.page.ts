@@ -1,14 +1,15 @@
 import { Page, Locator } from "@playwright/test";
+import { PaginationComponent } from "../components/pagination.component";
 
 
 export class ArticlesPage {
     readonly page: Page;
     readonly articlesMenuButton: Locator;
-    readonly paginationController: Locator;
+    readonly pagination: PaginationComponent;
 
     constructor(page: Page) {
         this.page = page;
         this.articlesMenuButton = page.getByTestId('open-articles');
-        this.paginationController = page.locator('#paginationController');
+        this.pagination = new PaginationComponent(page);
     }
 }
