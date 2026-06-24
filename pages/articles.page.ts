@@ -11,5 +11,9 @@ export class ArticlesPage {
         this.page = page;
         this.articlesMenuButton = page.getByTestId('open-articles');
         this.pagination = new PaginationComponent(page);
-    }
+    };
+
+    articleTitle(title: string): Locator {
+        return this.page.getByText(title, { exact: true });
+    };
 }

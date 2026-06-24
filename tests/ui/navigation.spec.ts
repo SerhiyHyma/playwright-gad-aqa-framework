@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '../../fixtures/app.fixture';
+import { ArticlesPage } from '../../pages/articles.page';
 
 
 test.describe.configure({mode: 'serial'});
@@ -31,7 +32,7 @@ test('User should see pagination on Articles page', async ({ page, homePage, art
     await expect(articlesPage.pagination.root).toBeVisible();
 });
 
-test('User should see article created via API on UI', async ({ page, homePage, authApi, articlesApi }) => {
+test('User should see article created via API on UI', async ({ page, homePage, authApi, articlesApi, articlesPage }) => {
     // Create variables
     const uniqueTitle = `Test Article ${Date.now()}`;
 
@@ -44,10 +45,10 @@ test('User should see article created via API on UI', async ({ page, homePage, a
     await homePage.openArticles();
 
     // Assert created article is visible
-    await expect(page.getByText(uniqueTitle)).toBeVisible();
+    await expect(articlesPage.articleTitle(uniqueTitle)).toBeVisible();
 });
 
-test('User should see article created via API on UI after DB restore', async ({ page, homePage, authApi, articlesApi, restoreApi }) => {
+test('User should see article created via API on UI after DB restore', async ({ page, homePage, authApi, articlesApi, restoreApi, articlesPage }) => {
     // Arrange
     await restoreApi.restoreDefaultDB();
     const uniqueTitle = `Restored Article ${Date.now()}`;
@@ -56,5 +57,5 @@ test('User should see article created via API on UI after DB restore', async ({ 
     // Act
     await homePage.openArticles();
     // Assert
-    await expect(page.getByText(uniqueTitle)).toBeVisible();
+    await expect(articlesPage.articleTitle(uniqueTitle)).toBeVisible();
 });
