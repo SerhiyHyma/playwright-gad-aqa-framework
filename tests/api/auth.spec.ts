@@ -18,6 +18,6 @@ test('User can create article via API', async ({ authApi, articlesApi }) => {
 test('User should not be able to create article without token', async ({ articlesApi }) => {
     const response = await articlesApi.createArticleWithoutToken('Unuthorized article');
     const body = await response.json();
-    expect(response.status).toBe(401);
+    expect(response.status()).toBe(401);
     expect(body.error.message).toContain('Access token');
 });
