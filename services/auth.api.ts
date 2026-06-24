@@ -1,5 +1,4 @@
 import { APIRequestContext, expect } from "@playwright/test";
-import { testUsers } from "../data/users";
 import { config } from '../config/env';
 import { LoginResponse } from "../types/api.types";
 

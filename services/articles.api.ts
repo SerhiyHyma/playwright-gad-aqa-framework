@@ -1,4 +1,4 @@
-import { APIRequestContext, expect } from '@playwright/test';
+import { APIRequestContext, APIResponse, expect } from '@playwright/test';
 import { buildArticlePayload } from '../factories/article.factory';
 import { ArticleResponse } from '../types/api.types';
 
@@ -21,5 +21,12 @@ export class ArticlesApi {
 
     async createDefaultArticle(token: string): Promise<ArticleResponse> {
         return await this.createArticle(token);
+    }
+
+    async createArticleWithoutToken(title?: string): Promise<APIResponse> {
+        const payload = buildArticlePayload(title ? { title } : undefined);
+        return await this.request.post('/api/articles', {
+            data: payload,
+        })
     }
 };
