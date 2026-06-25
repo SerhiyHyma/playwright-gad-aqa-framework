@@ -12,14 +12,17 @@
     "test:navigation": "playwright test tests/ui/navigation.spec.ts --project=chromium",
     "test:headed": "playwright test --project=chromium --headed",
     "test:debug": "playwright test --project=chromium --debug",
-    "report": "playwright show-report"
+    "report": "playwright show-report",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.58.2",
-    "@types/node": "^25.5.0"
+    "@types/node": "^25.5.0",
+    "prettier": "^3.8.4"
   },
   "dependencies": {
     "dotenv": "^17.4.2"

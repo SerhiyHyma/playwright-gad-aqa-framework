@@ -1,20 +1,19 @@
-import { APIRequestContext, expect } from "@playwright/test";
+import { APIRequestContext, expect } from '@playwright/test';
 import { config } from '../config/env';
-import { LoginResponse } from "../types/api.types";
-
+import { LoginResponse } from '../types/api.types';
 
 export class AuthApi {
-    constructor(private request: APIRequestContext) {};
+  constructor(private request: APIRequestContext) {}
 
-    async login(): Promise<string> {
-        const response = await this.request.post('/api/login', {
-            data: {
-                email: config.user.email,
-                password: config.user.password,
-            }
-        });
-        await expect(response).toBeOK();
-        const body = await response.json() as LoginResponse;
-        return body.access_token;
-    }
+  async login(): Promise<string> {
+    const response = await this.request.post('/api/login', {
+      data: {
+        email: config.user.email,
+        password: config.user.password,
+      },
+    });
+    await expect(response).toBeOK();
+    const body = (await response.json()) as LoginResponse;
+    return body.access_token;
+  }
 }
