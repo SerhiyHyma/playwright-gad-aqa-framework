@@ -29,6 +29,9 @@ jobs:
       - name: Install automation dependencies
         run: npm ci
 
+      - name: Check formatting
+        run: npm run format:check
+
       - name: Clone GAD app
         run: git clone https://github.com/jaktestowac/gad-gui-api-demo.git ../gad-gui-api-demo
 
