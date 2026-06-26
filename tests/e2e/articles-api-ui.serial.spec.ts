@@ -3,9 +3,7 @@ import { test } from '../../fixtures/app.fixture';
 
 test.describe.configure({ mode: 'serial' });
 
-
 test('User should see article created via API on UI', async ({
-  homePage,
   authApi,
   articlesApi,
   articlesPage,
@@ -25,8 +23,6 @@ test('User should see article created via API on UI', async ({
 });
 
 test('User should see article created via API on UI after DB restore', async ({
-  page,
-  homePage,
   authApi,
   articlesApi,
   restoreApi,
