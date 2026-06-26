@@ -3,9 +3,6 @@ import { test } from '../../fixtures/app.fixture';
 
 test.describe.configure({ mode: 'serial' });
 
-test.beforeEach(async ({ homePage }) => {
-  await homePage.open();
-});
 
 test('User should see article created via API on UI', async ({
   homePage,
@@ -21,8 +18,7 @@ test('User should see article created via API on UI', async ({
   await articlesApi.createArticle(token, uniqueTitle);
 
   // Open UI
-  await homePage.open();
-  await homePage.openArticles();
+  await articlesPage.open();
 
   // Assert created article is visible
   await expect(articlesPage.articleTitle(uniqueTitle)).toBeVisible();
@@ -42,7 +38,7 @@ test('User should see article created via API on UI after DB restore', async ({
   const token = await authApi.login();
   await articlesApi.createArticle(token, uniqueTitle);
   // Act
-  await homePage.openArticles();
+  await articlesPage.open();
   // Assert
   await expect(articlesPage.articleTitle(uniqueTitle)).toBeVisible();
 });

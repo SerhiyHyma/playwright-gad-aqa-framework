@@ -12,6 +12,10 @@ export class ArticlesPage {
     this.pagination = new PaginationComponent(page);
   }
 
+  async open(): Promise<void> {
+    await this.page.goto('/articles.html');
+  }
+
   articleTitle(title: string): Locator {
     return this.page.getByText(title, { exact: true });
   }
