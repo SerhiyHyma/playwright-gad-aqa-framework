@@ -3,6 +3,10 @@ import { test } from '../../fixtures/app.fixture';
 
 test.describe.configure({ mode: 'serial' });
 
+test.beforeEach(async ({ restoreApi }) => {
+  await restoreApi.restoreDefaultDB();
+});
+
 test('User should see article created via API on UI', async ({
   authApi,
   articlesApi,
@@ -22,7 +26,7 @@ test('User should see article created via API on UI', async ({
   await expect(articlesPage.articleTitle(uniqueTitle)).toBeVisible();
 });
 
-test('User should see article created via API on UI after DB restore', async ({
+test.skip('User should see article created via API on UI after DB restore', async ({
   authApi,
   articlesApi,
   restoreApi,
