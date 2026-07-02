@@ -16,7 +16,9 @@
     "test:debug": "playwright test --project=chromium --debug",
     "report": "playwright show-report",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test:visual": "playwright test tests/visual --project=chromium --workers=1",
+    "test:visual:update": "playwright test tests/visual --project=chromium --workers=1 --update-snapshots"
   },
   "keywords": [],
   "author": "",
