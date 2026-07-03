@@ -31,3 +31,12 @@ test('User should see pagination on Articles page', async ({ page, homePage, art
   await expect(page).toHaveURL('http://localhost:3000/articles.html');
   await expect(articlesPage.pagination.root).toBeVisible();
 });
+
+test('User can navigate between article pages using pagination', async ({articlesPage}) => {
+  await articlesPage.open();
+  await expect(articlesPage.pagination.currentPage).toHaveText('1');
+  await articlesPage.pagination.goToNextPage();
+  await expect(articlesPage.pagination.currentPage).toHaveText('2');
+  await articlesPage.pagination.goToPreviousPage();
+  await expect(articlesPage.pagination.currentPage).toHaveText('1');
+})
