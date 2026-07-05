@@ -1,7 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '../../fixtures/app.fixture';
 
-
 test.beforeEach(async ({ articlesPage }) => {
   await articlesPage.open();
 });
