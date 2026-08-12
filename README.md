@@ -18,11 +18,11 @@ fixtures, API clients, test data factories, and CI.
 
 ## What is covered
 
-| Layer | Location | Examples |
-| --- | --- | --- |
-| UI | `tests/ui` | Home page, navigation to Articles, pagination |
-| API | `tests/api` | Login + token, create article, 401 without auth, health / DB check, DB restore |
-| E2E | `tests/e2e` | Create article via API → assert it is visible in UI |
+| Layer  | Location       | Examples                                                                            |
+| ------ | -------------- | ----------------------------------------------------------------------------------- |
+| UI     | `tests/ui`     | Home page, navigation to Articles, pagination                                       |
+| API    | `tests/api`    | Login + token, create article, 401 without auth, health / DB check, DB restore      |
+| E2E    | `tests/e2e`    | Create article via API → assert it is visible in UI                                 |
 | Visual | `tests/visual` | Full-page screenshot of Articles (local / Windows baseline; not part of `npm test`) |
 
 ## Architecture
